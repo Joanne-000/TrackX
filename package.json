@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky",
+    "lint-staged": "lint-staged",
     "commitlint": "commitlint --edit"
   },
   "lint-staged": {
@@ -36,6 +37,7 @@
     "vite": "^6.3.5"
   },
   "trustedDependencies": [
-    "@swc/core"
+    "@swc/core",
+    "esbuild"
   ]
 }

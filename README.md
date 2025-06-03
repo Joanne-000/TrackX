@@ -1,42 +1,49 @@
-# SEB Project 2 Starter
+# TrackX - Your currencies exchange and personal wealth tracker
 
-## Vite setup
+## Project Brief
 
-```bash
-❯ bun create vite@latest
-◇  Project name:
-│  seb-p2-starter
-│
-◇  Select a framework:
-│  React
-│
-◇  Select a variant:
-│  JavaScript + SWC
-```
+## Timeframe
 
-## Did install
+1 week
 
-- `bun install`
-- `bun pm trust -all`
+## Technologies used
 
-## Did GA modifications
+React<br>
+Bruno <br>
+libraries
 
-- eslint.config.js
-- App.jsx
+## Description
 
-## Remove unused files
+This apps is called TrackX, means currency exchange and wealth tracker.
 
-- remove reference in `src/main.jsx`
-  - `src/index.css`
-- remove reference in `src/App.jsx`
-  - `src/App.css`
-  - `src/assets/react.svg`
+## Wireframe
 
-## Setup commitlint
+by considering what to include in my apps and what are the features to be included, I have prepared the wireframe of my apps as follows:
 
-- `bun add -d @commitlint/cli @commitlint/config-conventional`
-- `bun add -d husky`
-- `bunx husky init`
-  - remove `.husky/pre-commit`
-- `bun pkg set scripts.commitlint="commitlint --edit"`
-- `echo "bun run commitlint \${1}" > .husky/commit-msg`
+Figure 1: Main page of TrackX<br>
+<img src="src/assets/TrackX_Homepage.png" alt="Main page"  width="60%" height=auto><br>
+
+Figure 2: Currency Exchange Rate page of TrackX<br>
+<img src="src/assets/TrackX_CurrencyExchangeRate.png" alt="Currency Exchange Rate page"  width="60%" height=auto><br>
+
+Figure 3: Wealth Tracker page of TrackX<br>
+<img src="src/assets/TrackX_WealthTracker.png" alt="Wealth Tracker page"  width="60%" height=auto><br>
+
+### buy or sell
+
+## User stories
+
+1. As a user, I want to see the popular currency exchange rates on the main page.
+2. As a user, I want to see more currency exchange rates for different countries.
+3. As a user, I want to input the amount to check the converted rate.
+4. As a user, I want to change the base currency. (current base rate would SGD)
+5. As a user, I want to check the historical rates.
+6. As a user, I want to know how much is the summary of my total wealth for each currencies on the main page.
+7. As a user, I want to track and see the details of my total wealth in different currenies.
+8. As a user, I want to know what is my total wealth after converted to the base currency I chose.
+
+## References
+
+## Attributions
+
+1. https://currencybeacon.com/
