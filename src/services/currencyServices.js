@@ -8,7 +8,6 @@ const indexLatest = async () => {
   const category = "latest";
   const url =
     BASE_URL + "/" + category + "?api_key=" + API_KEY + "&base=" + base;
-
   try {
     const respond = await fetch(url);
 

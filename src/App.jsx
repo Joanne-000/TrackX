@@ -1,7 +1,10 @@
 import { indexLatest, indexHistorical } from "./services/currencyServices";
 import Homepage from "./pages/Homepage";
-import GCER from "./pages/GCER";
-import TET from "./pages/TET";
+
+import { Route, Routes } from "react-router";
+import GCERDetails from "./pages/GCERDetails";
+import TETDetails from "./pages/TETDetails";
+import NavBar from "./components/NavBar";
 
 export default function App() {
   const handleLatest = () => {
@@ -27,10 +30,13 @@ export default function App() {
         Check Historical data 2025-03-05
       </button>
       <br />
+      <NavBar />
 
-      <Homepage />
-      <GCER />
-      <TET />
+      <Routes>
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/CurrencyExchange" element={<GCERDetails />}></Route>
+        <Route path="/TripExpensesTracker" element={<TETDetails />}></Route>
+      </Routes>
     </>
   );
 }
