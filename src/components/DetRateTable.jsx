@@ -1,4 +1,4 @@
-import DetailRates from "./DetRates";
+import AllRates from "./AllRates";
 
 const DetRateTable = ({ rateData, amountInput }) => {
   const allRates = Object.keys(rateData).sort();
@@ -17,7 +17,7 @@ const DetRateTable = ({ rateData, amountInput }) => {
         </tr>
       </thead>
       <tbody>
-        <DetailRates
+        <AllRates
           allRates={allRates}
           rateData={rateData}
           amountInput={amountInput}

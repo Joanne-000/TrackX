@@ -1,11 +1,10 @@
 import { useState } from "react";
 
-const FavouriteRates = ({ favourites, rateData, amountInput }) => {
-  console.log("favourite", rateData);
+const AllRates = ({ allRates, rateData, amountInput }) => {
   return (
     <>
       {rateData &&
-        favourites.map((item) => (
+        allRates.map((item) => (
           <tr key={item}>
             <td>{item}</td>
             <td>
@@ -26,4 +25,4 @@ const FavouriteRates = ({ favourites, rateData, amountInput }) => {
   );
 };
 
-export default FavouriteRates;
+export default AllRates;

@@ -14,6 +14,7 @@ export default function App() {
     const fetchData = async () => {
       const dataLatest = await indexLatest(base);
       setRateData(dataLatest.rates);
+      console.log("Hi");
     };
     fetchData();
   }, []);
@@ -21,6 +22,14 @@ export default function App() {
   const handleHistorical = () => {
     const fetchData = async () => {
       const dataHistorical = await indexHistorical(base, "2025-03-02");
+    };
+    fetchData();
+  };
+
+  const handleRefresh = () => {
+    const fetchData = async () => {
+      const dataLatest = await indexLatest(base);
+      setRateData(dataLatest.rates);
     };
     fetchData();
   };
@@ -35,11 +44,16 @@ export default function App() {
       <NavBar />
 
       <Routes>
-        <Route path="/" element={<Homepage rateData={rateData} />}></Route>
+        <Route
+          path="/"
+          element={
+            <Homepage rateData={rateData} handleRefresh={handleRefresh} />
+          }
+        ></Route>
         <Route
           path="/CurrencyExchange"
           element={
-            <GCERDetails rateData={rateData} setRateData={setRateData} />
+            <GCERDetails rateData={rateData} handleRefresh={handleRefresh} />
           }
         ></Route>
         {/* <Route path="/TripExpensesTracker" element={<TETDetails />}></Route> */}
