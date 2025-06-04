@@ -1,10 +1,12 @@
 import GCER from "../components/GCER";
 import TET from "../components/TET";
+import { indexLatest } from "../services/currencyServices";
+import { useEffect, useState } from "react";
 
-const Homepage = () => {
+const Homepage = ({ rateData }) => {
   return (
     <>
-      <GCER />
+      <GCER rateData={rateData} />
       <TET />
     </>
   );

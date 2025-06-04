@@ -1,7 +1,14 @@
+import { useState } from "react";
 import RateTable from "./RateTable";
 import { Link } from "react-router";
 
-const GCER = () => {
+const GCER = ({ rateData }) => {
+  const [amountInput, setAmountInput] = useState(1);
+
+  const handleChange = (event) => {
+    setAmountInput(Number(event.target.value));
+  };
+
   return (
     <div>
       <h3>Global Currency Exchange Rate</h3>
@@ -16,10 +23,11 @@ const GCER = () => {
       <br />
       <div>
         Amount:
-        <input type="number" defaultValue={1} />
+        <input type="number" value={amountInput} onChange={handleChange} />
+        <button>Refresh</button>
       </div>
       <br />
-      <RateTable />
+      <RateTable rateData={rateData} amountInput={amountInput} />
       <br />
       <Link to="/CurrencyExchange">
         <button>See more rates</button>

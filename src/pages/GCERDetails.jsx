@@ -1,6 +1,22 @@
-import RateTable from "../components/RateTable";
+import DetRateTable from "../components/DetRateTable";
+import { useState } from "react";
+import { indexLatest } from "../services/currencyServices";
 
-const GCERDetails = () => {
+const GCERDetails = ({ rateData, setRateData }) => {
+  const [amountInput, setAmountInput] = useState(1);
+
+  const handleRefresh = () => {
+    const fetchData = async () => {
+      const dataLatest = await indexLatest(base);
+      setRateData(dataLatest.rates);
+    };
+    fetchData();
+  };
+
+  const handleChange = (event) => {
+    setAmountInput(event.target.value);
+  };
+
   return (
     <div>
       <h3>Global Currency Exchange Rate</h3>
@@ -13,14 +29,11 @@ const GCERDetails = () => {
         </select>
       </div>
       <br />
-      <div>
-        Amount:
-        <input type="number" defaultValue={1} />
-      </div>
+      Amount:
+      <input type="number" value={amountInput} onChange={handleChange} />
+      <button onClick={handleRefresh}>Refresh</button>
       <br />
-      <RateTable />
-      <br />
-      <button>Add more rates</button>
+      <DetRateTable rateData={rateData} amountInput={amountInput} />
     </div>
   );
 };

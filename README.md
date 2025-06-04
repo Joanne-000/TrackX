@@ -1,4 +1,4 @@
-# TrackX - Your currencies exchange and personal wealth tracker
+# TrackX - Your Currencies Exchange and Trip Expenses Tracker
 
 ## Project Brief
 

@@ -2,9 +2,9 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = `https://api.currencybeacon.com/v1`;
 
 const category = "";
-const base = "SGD";
+const testURL = `http://localhost:3000/`;
 
-const indexLatest = async () => {
+const indexLatest = async (base) => {
   const category = "latest";
   const url =
     BASE_URL + "/" + category + "?api_key=" + API_KEY + "&base=" + base;
@@ -22,7 +22,7 @@ const indexLatest = async () => {
   }
 };
 
-const indexHistorical = async (date) => {
+const indexHistorical = async (base, date) => {
   const category = "historical";
 
   const url =
