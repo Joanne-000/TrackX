@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const AllRates = ({ allRates, rateData, amountInput }) => {
   return (
     <>

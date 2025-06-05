@@ -44,6 +44,10 @@ Figure 3: Wealth Tracker page of TrackX<br>
 
 ## References
 
+1. https://www.reddit.com/r/learnreactjs/comments/sgim34/fetch_api_works_then_suddenly_stops_working_after/#lightbox
+
+2. https://www.google.com/search?q=can+i+have+thousand+indicator+in+react&rlz=1C1CHBF_en-GBSG1158SG1158&oq=can+i+have+thousand+indicator+in+react&gs_lcrp=EgZjaHJvbWUyCwgAEEUYChg5GKABMgkIARAhGAoYoAEyCQgCECEYChigAdIBCTExMzc2ajBqN6gCCLACAfEFekINyyaWzAk&sourceid=chrome&ie=UTF-8
+
 ## Attributions
 
 1. https://currencybeacon.com/

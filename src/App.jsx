@@ -14,7 +14,6 @@ export default function App() {
     const fetchData = async () => {
       const dataLatest = await indexLatest(base);
       setRateData(dataLatest.rates);
-      console.log("Hi");
     };
     fetchData();
   }, []);
@@ -56,7 +55,7 @@ export default function App() {
             <GCERDetails rateData={rateData} handleRefresh={handleRefresh} />
           }
         ></Route>
-        {/* <Route path="/TripExpensesTracker" element={<TETDetails />}></Route> */}
+        <Route path="/TripExpensesTracker" element={<TETDetails />}></Route>
       </Routes>
     </>
   );

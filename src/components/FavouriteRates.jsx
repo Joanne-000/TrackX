@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const FavouriteRates = ({ favourites, rateData, amountInput }) => {
-  console.log("favourite", rateData);
   return (
     <>
       {rateData &&
