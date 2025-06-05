@@ -1,11 +1,12 @@
-import DetExpensesTable from "../components/DetExpensesTable";
+import DetExpensesTable from "../components/TripExpenseTracker/DetExpensesTable";
 
-const TETDetails = () => {
+const TETDetails = ({ savedData }) => {
   return (
     <div>
       <h3>Trip Expenses Tracker</h3>
-      <DetExpensesTable />
+      <DetExpensesTable savedData={savedData} />
       <br />
+      <button>Add Trip</button>
     </div>
   );
 };

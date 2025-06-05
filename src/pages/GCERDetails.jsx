@@ -1,4 +1,4 @@
-import DetRateTable from "../components/DetRateTable";
+import DetRateTable from "../components/CurrencyExchange/DetRateTable";
 import { useState } from "react";
 import { indexLatest } from "../services/currencyServices";
 

@@ -1,11 +1,13 @@
 import ExpensesTable from "./ExpensesTable";
 import { Link } from "react-router";
 
-const TET = () => {
+const TET = ({ savedData }) => {
+  console.log(savedData);
+
   return (
     <div>
       <h3>Trip Expenses Tracker</h3>
-      <ExpensesTable />
+      <ExpensesTable savedData={savedData} />
       <br />
       <Link to="/TripExpensesTracker">
         <button>See details</button>

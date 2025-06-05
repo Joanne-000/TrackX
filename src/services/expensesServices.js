@@ -1,14 +1,14 @@
-const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = `https://api.airtable.com/v0/appAeRLzbbbDJxPFN/Table%201?maxRecords=3&view=Grid%20view`;
 
-const category = "";
-
-const indexLatest = async (base) => {
-  const category = "latest";
-  const url =
-    BASE_URL + "/" + category + "?api_key=" + API_KEY + "&base=" + base;
+const indexAirtable = async () => {
   try {
-    const respond = await fetch(url);
+    const respond = await fetch(BASE_URL, {
+      headers: {
+        Authorization:
+          "Bearer patUQQwGtzMj4DbdX.d82f4212b6c59385bd111004b3426467a94fb086d9bfe1985cf6f8794ef13a01",
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!respond.ok) {
       throw new Error("Failed to fetch data");
@@ -20,3 +20,5 @@ const indexLatest = async (base) => {
     console.log(error);
   }
 };
+
+export { indexAirtable };

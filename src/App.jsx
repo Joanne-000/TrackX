@@ -1,4 +1,5 @@
 import { indexLatest, indexHistorical } from "./services/currencyServices";
+import { indexAirtable } from "./services/expensesServices";
 import Homepage from "./pages/Homepage";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
@@ -9,11 +10,20 @@ import NavBar from "./components/NavBar";
 export default function App() {
   const [base, setBase] = useState("SGD");
   const [rateData, setRateData] = useState();
+  const [savedData, setSavedData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       const dataLatest = await indexLatest(base);
       setRateData(dataLatest.rates);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const dataSaved = await indexAirtable();
+      setSavedData(dataSaved.records);
     };
     fetchData();
   }, []);
@@ -32,6 +42,7 @@ export default function App() {
     };
     fetchData();
   };
+  console.log(savedData);
 
   return (
     <>
@@ -46,7 +57,11 @@ export default function App() {
         <Route
           path="/"
           element={
-            <Homepage rateData={rateData} handleRefresh={handleRefresh} />
+            <Homepage
+              rateData={rateData}
+              handleRefresh={handleRefresh}
+              savedData={savedData}
+            />
           }
         ></Route>
         <Route
@@ -55,7 +70,10 @@ export default function App() {
             <GCERDetails rateData={rateData} handleRefresh={handleRefresh} />
           }
         ></Route>
-        <Route path="/TripExpensesTracker" element={<TETDetails />}></Route>
+        <Route
+          path="/TripExpensesTracker"
+          element={<TETDetails savedData={savedData} />}
+        ></Route>
       </Routes>
     </>
   );
