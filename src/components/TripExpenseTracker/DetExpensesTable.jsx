@@ -37,15 +37,13 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
                 }).format(Number(data.fields.Expenses).toFixed(2))}
               </td>
               <td>
-                {/* {data.fields.BaseCode}{" "}
+                {data.fields.BaseCode}{" "}
                 {Intl.NumberFormat("en-US").format(
-                  data.fields.Converted.toFixed(2),
-                  )} */}
-                amount
+                  Number(data.fields.Converted).toFixed(2),
+                )}
               </td>
               <td>
-                rates
-                {/* {`${data.fields.BaseCode} 1 = ${data.fields.Code} ${data.fields.CurrencyRate}`} */}
+                {`${data.fields.Base} 1 = ${data.fields.Code} ${data.fields.Rates}`}
               </td>
               <td>
                 <button id={data.id} onClick={handleClickEdit}>

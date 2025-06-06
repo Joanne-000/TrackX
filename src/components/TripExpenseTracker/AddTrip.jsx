@@ -31,18 +31,15 @@ const AddTrip = ({ addSavedData, base }) => {
   };
 
   const setData = async () => {
-    const value = Intl.NumberFormat("en-US").format(
-      Number(dataHistorical.rates[formData.Code]).toFixed(2),
-    );
-    const convertedAmount = Intl.NumberFormat("en-US").format(
-      Number(formData.Expenses) * Number(value).toFixed(2),
-    );
+    const value = Number(dataHistorical.rates[formData.Code]).toFixed(2);
+    const convertedAmount = (Number(formData.Expenses) * value).toFixed(2);
 
     const data = await create({
       ...formData,
       Rates: value,
       Converted: convertedAmount,
     });
+
     addSavedData(data);
     console.log(data);
     setFormData({

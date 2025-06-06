@@ -42,11 +42,11 @@ export default function App() {
   };
 
   const addSavedData = (formData) => {
-    setSavedData({ ...savedData, formData });
+    setSavedData([...savedData, formData]);
   };
 
   const editSavedData = (formData) => {
-    setSavedData({ ...savedData, formData });
+    setSavedData([...savedData, formData]);
   };
 
   const delSavedData = (id) => {

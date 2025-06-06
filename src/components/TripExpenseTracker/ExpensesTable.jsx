@@ -23,13 +23,15 @@ const ExpensesTable = ({ savedData }) => {
                   maximumFractionDigits: 2,
                 }).format(Number(data.fields.Expenses).toFixed(2))}
               </td>
-              {/* <td>
+              <td>
                 {data.fields.BaseCode}{" "}
                 {Intl.NumberFormat("en-US").format(
-                  data.fields.Converted.toFixed(2),
+                  Number(data.fields.Converted).toFixed(2),
                 )}
               </td>
-              <td>{`${data.fields.BaseCode} 1 = ${data.fields.Code} ${data.fields.CurrencyRate}`}</td> */}
+              <td>
+                {`${data.fields.Base} 1 = ${data.fields.Code} ${data.fields.Rates}`}
+              </td>
             </tr>
           ))}
       </tbody>
