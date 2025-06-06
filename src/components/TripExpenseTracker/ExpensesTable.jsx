@@ -17,14 +17,19 @@ const ExpensesTable = ({ savedData }) => {
             <tr key={data.id}>
               <td>{data.fields.Date}</td>
               <td>{data.fields.Code}</td>
-              <td>{Intl.NumberFormat("en-US").format(data.fields.Expenses)}</td>
               <td>
+                {Intl.NumberFormat("en-US", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }).format(Number(data.fields.Expenses).toFixed(2))}
+              </td>
+              {/* <td>
                 {data.fields.BaseCode}{" "}
                 {Intl.NumberFormat("en-US").format(
                   data.fields.Converted.toFixed(2),
                 )}
               </td>
-              <td>{`${data.fields.BaseCode} 1 = ${data.fields.Code} ${data.fields.CurrencyRate}`}</td>
+              <td>{`${data.fields.BaseCode} 1 = ${data.fields.Code} ${data.fields.CurrencyRate}`}</td> */}
             </tr>
           ))}
       </tbody>

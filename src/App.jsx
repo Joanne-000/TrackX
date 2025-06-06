@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router";
 import GCERDetails from "./pages/GCERDetails";
 import TETDetails from "./pages/TETDetails";
 import NavBar from "./components/NavBar";
+import AddTrip from "./components/TripExpenseTracker/AddExpense";
+import EditTrip from "./components/TripExpenseTracker/EditExpense";
 
 export default function App() {
   const [base, setBase] = useState("SGD");
@@ -28,6 +30,11 @@ export default function App() {
     fetchData();
   }, []);
 
+  const fetchData = async () => {
+    const dataSaved = await indexAirtable();
+    setSavedData(dataSaved.records);
+  };
+
   const handleHistorical = () => {
     const fetchData = async () => {
       const dataHistorical = await indexHistorical(base, "2025-03-02");
@@ -42,7 +49,18 @@ export default function App() {
     };
     fetchData();
   };
-  console.log(savedData);
+
+  const addSavedData = (formData) => {
+    setSavedData({ ...savedData, formData });
+  };
+
+  const editSavedData = (formData) => {
+    setSavedData({ ...savedData, formData });
+  };
+
+  const delSavedData = (id) => {
+    setSavedData(savedData.filter((obj) => obj.id !== id));
+  };
 
   return (
     <>
@@ -72,7 +90,17 @@ export default function App() {
         ></Route>
         <Route
           path="/TripExpensesTracker"
-          element={<TETDetails savedData={savedData} />}
+          element={
+            <TETDetails savedData={savedData} delSavedData={delSavedData} />
+          }
+        ></Route>
+        <Route
+          path="/TripExpensesTracker/new"
+          element={<AddTrip addSavedData={addSavedData} />}
+        ></Route>
+        <Route
+          path="/TripExpensesTracker/:tripId/edit"
+          element={<EditTrip editSavedData={editSavedData} />}
         ></Route>
       </Routes>
     </>

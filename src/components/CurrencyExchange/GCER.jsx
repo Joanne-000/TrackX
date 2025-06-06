@@ -15,7 +15,7 @@ const GCER = ({ rateData, handleRefresh }) => {
       <p>Last update: date & time</p>
       <br />
       <div>
-        From:
+        Base Currency:
         <select>
           <option>SGD</option>
         </select>

@@ -1,12 +1,26 @@
 import DetExpensesTable from "../components/TripExpenseTracker/DetExpensesTable";
+import { Link } from "react-router";
 
-const TETDetails = ({ savedData }) => {
+const TETDetails = ({ savedData, delSavedData }) => {
+  const handleChange = () => {
+    console.log("clicked");
+  };
+
   return (
     <div>
       <h3>Trip Expenses Tracker</h3>
-      <DetExpensesTable savedData={savedData} />
+      <div>
+        Base Currency:
+        <select onChange={handleChange}>
+          <option>SGD</option>
+        </select>
+      </div>
       <br />
-      <button>Add Trip</button>
+      <DetExpensesTable savedData={savedData} delSavedData={delSavedData} />
+      <br />
+      <Link to="/TripExpensesTracker/new">
+        <button>AddTrip</button>
+      </Link>
     </div>
   );
 };
