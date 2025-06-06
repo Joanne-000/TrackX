@@ -1,4 +1,4 @@
-import { indexLatest, indexHistorical } from "./services/currencyServices";
+import { indexLatest } from "./services/currencyServices";
 import { indexAirtable } from "./services/expensesServices";
 import Homepage from "./pages/Homepage";
 import { useEffect, useState } from "react";
@@ -6,13 +6,16 @@ import { Route, Routes } from "react-router";
 import GCERDetails from "./pages/GCERDetails";
 import TETDetails from "./pages/TETDetails";
 import NavBar from "./components/NavBar";
-import AddTrip from "./components/TripExpenseTracker/AddExpense";
+import AddTrip from "./components/TripExpenseTracker/AddTrip";
 import EditTrip from "./components/TripExpenseTracker/EditExpense";
+import { useNavigate } from "react-router";
 
 export default function App() {
   const [base, setBase] = useState("SGD");
   const [rateData, setRateData] = useState();
   const [savedData, setSavedData] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,18 +32,6 @@ export default function App() {
     };
     fetchData();
   }, []);
-
-  const fetchData = async () => {
-    const dataSaved = await indexAirtable();
-    setSavedData(dataSaved.records);
-  };
-
-  const handleHistorical = () => {
-    const fetchData = async () => {
-      const dataHistorical = await indexHistorical(base, "2025-03-02");
-    };
-    fetchData();
-  };
 
   const handleRefresh = () => {
     const fetchData = async () => {
@@ -64,12 +55,14 @@ export default function App() {
 
   return (
     <>
-      <button>Check Latest data</button>
-      <button onClick={handleHistorical}>
-        Check Historical data 2025-03-05
-      </button>
-      <br />
       <NavBar />
+      <br />
+      <div>
+        Base Currency:
+        <select>
+          <option>SGD</option>
+        </select>
+      </div>
 
       <Routes>
         <Route
@@ -96,7 +89,7 @@ export default function App() {
         ></Route>
         <Route
           path="/TripExpensesTracker/new"
-          element={<AddTrip addSavedData={addSavedData} />}
+          element={<AddTrip addSavedData={addSavedData} base={base} />}
         ></Route>
         <Route
           path="/TripExpensesTracker/:tripId/edit"

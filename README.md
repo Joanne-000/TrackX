@@ -1,4 +1,4 @@
-# TrackX - Your Currencies Exchange and Trip Expenses Tracker
+# TrackX - Your console.log(s)
 
 ## Project Brief
 

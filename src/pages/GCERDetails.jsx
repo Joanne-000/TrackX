@@ -15,15 +15,10 @@ const GCERDetails = ({ rateData, handleRefresh }) => {
       <p>Last update: date & time</p>
       <br />
       <div>
-        From:
-        <select>
-          <option>SGD</option>
-        </select>
+        Amount:
+        <input type="number" value={amountInput} onChange={handleChange} />
+        <button onClick={handleRefresh}>Refresh</button>
       </div>
-      <br />
-      Amount:
-      <input type="number" value={amountInput} onChange={handleChange} />
-      <button onClick={handleRefresh}>Refresh</button>
       <br />
       <DetRateTable rateData={rateData} amountInput={amountInput} />
     </div>

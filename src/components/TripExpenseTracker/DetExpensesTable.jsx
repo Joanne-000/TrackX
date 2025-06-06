@@ -1,6 +1,8 @@
 import { destroy } from "../../services/expensesServices";
 
 const DetExpensesTable = ({ savedData, delSavedData }) => {
+  console.log(savedData);
+
   const handleClickEdit = () => {
     console.log("edit");
   };
@@ -18,6 +20,8 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
           <th>Total Expense</th>
           <th>Converted Amount</th>
           <th>Rates</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -32,13 +36,17 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
                   maximumFractionDigits: 2,
                 }).format(Number(data.fields.Expenses).toFixed(2))}
               </td>
-              {/* <td>
-                {data.fields.BaseCode}{" "}
+              <td>
+                {/* {data.fields.BaseCode}{" "}
                 {Intl.NumberFormat("en-US").format(
                   data.fields.Converted.toFixed(2),
-                  )}
-                  </td>
-                  <td>{`${data.fields.BaseCode} 1 = ${data.fields.Code} ${data.fields.CurrencyRate}`}</td> */}
+                  )} */}
+                amount
+              </td>
+              <td>
+                rates
+                {/* {`${data.fields.BaseCode} 1 = ${data.fields.Code} ${data.fields.CurrencyRate}`} */}
+              </td>
               <td>
                 <button id={data.id} onClick={handleClickEdit}>
                   Edit

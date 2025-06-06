@@ -15,13 +15,6 @@ const GCER = ({ rateData, handleRefresh }) => {
       <p>Last update: date & time</p>
       <br />
       <div>
-        Base Currency:
-        <select>
-          <option>SGD</option>
-        </select>
-      </div>
-      <br />
-      <div>
         Amount:
         <input type="number" value={amountInput} onChange={handleChange} />
         <button onClick={handleRefresh}>Refresh</button>

@@ -1,7 +1,9 @@
 import DetExpensesTable from "../components/TripExpenseTracker/DetExpensesTable";
 import { Link } from "react-router";
+import { useState } from "react";
 
 const TETDetails = ({ savedData, delSavedData }) => {
+  console.log(savedData);
   const handleChange = () => {
     console.log("clicked");
   };
@@ -9,17 +11,11 @@ const TETDetails = ({ savedData, delSavedData }) => {
   return (
     <div>
       <h3>Trip Expenses Tracker</h3>
-      <div>
-        Base Currency:
-        <select onChange={handleChange}>
-          <option>SGD</option>
-        </select>
-      </div>
-      <br />
+
       <DetExpensesTable savedData={savedData} delSavedData={delSavedData} />
       <br />
       <Link to="/TripExpensesTracker/new">
-        <button>AddTrip</button>
+        <button type="submit">AddTrip</button>
       </Link>
     </div>
   );

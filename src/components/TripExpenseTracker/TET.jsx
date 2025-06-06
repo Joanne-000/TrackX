@@ -2,8 +2,6 @@ import ExpensesTable from "./ExpensesTable";
 import { Link } from "react-router";
 
 const TET = ({ savedData }) => {
-  console.log(savedData);
-
   return (
     <div>
       <h3>Trip Expenses Tracker</h3>
