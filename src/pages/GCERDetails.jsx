@@ -1,6 +1,8 @@
-import DetRateTable from "../components/CurrencyExchange/DetRateTable";
+import DetRateTable from "../components/CurrencyExchange/OnePageRates";
 import { useState } from "react";
 import { indexLatest } from "../services/currencyServices";
+import RatePagination from "../components/RatePagination";
+import { Outlet } from "react-router";
 
 const GCERDetails = ({ rateData, handleRefresh }) => {
   const [amountInput, setAmountInput] = useState(1);
@@ -8,7 +10,6 @@ const GCERDetails = ({ rateData, handleRefresh }) => {
   const handleChange = (event) => {
     setAmountInput(event.target.value);
   };
-
   return (
     <div>
       <h3>Global Currency Exchange Rate</h3>
@@ -20,7 +21,8 @@ const GCERDetails = ({ rateData, handleRefresh }) => {
         <button onClick={handleRefresh}>Refresh</button>
       </div>
       <br />
-      <DetRateTable rateData={rateData} amountInput={amountInput} />
+      <RatePagination rateData={rateData} />
+      <Outlet context={amountInput} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useState } from "react";
 import RateTable from "./RateTable";
 import { Link } from "react-router";
 
-const GCER = ({ rateData, handleRefresh }) => {
+const GCER = ({ rateData, handleRefresh, base }) => {
   const [amountInput, setAmountInput] = useState(1);
 
   const handleChange = (event) => {
@@ -20,7 +20,7 @@ const GCER = ({ rateData, handleRefresh }) => {
         <button onClick={handleRefresh}>Refresh</button>
       </div>
       <br />
-      <RateTable rateData={rateData} amountInput={amountInput} />
+      <RateTable rateData={rateData} amountInput={amountInput} base={base} />
       <br />
       <Link to="/CurrencyExchange">
         <button>See more rates</button>

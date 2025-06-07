@@ -9,6 +9,8 @@ import NavBar from "./components/NavBar";
 import AddTrip from "./components/TripExpenseTracker/AddTrip";
 import EditTrip from "./components/TripExpenseTracker/EditExpense";
 import { useNavigate } from "react-router";
+import RatePagination from "./components/RatePagination";
+import OnePageRates from "./components/CurrencyExchange/OnePageRates";
 
 export default function App() {
   const [base, setBase] = useState("SGD");
@@ -69,6 +71,7 @@ export default function App() {
           path="/"
           element={
             <Homepage
+              base={base}
               rateData={rateData}
               handleRefresh={handleRefresh}
               savedData={savedData}
@@ -78,9 +81,19 @@ export default function App() {
         <Route
           path="/CurrencyExchange"
           element={
-            <GCERDetails rateData={rateData} handleRefresh={handleRefresh} />
+            <GCERDetails
+              rateData={rateData}
+              handleRefresh={handleRefresh}
+              base={base}
+            />
           }
-        ></Route>
+        >
+          <Route
+            path=":charId"
+            element={<OnePageRates rateData={rateData} base={base} />}
+          ></Route>
+        </Route>
+
         <Route
           path="/TripExpensesTracker"
           element={

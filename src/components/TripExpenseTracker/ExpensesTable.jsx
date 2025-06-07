@@ -1,5 +1,4 @@
 const ExpensesTable = ({ savedData }) => {
-  console.log(savedData);
   return (
     <table>
       <thead>

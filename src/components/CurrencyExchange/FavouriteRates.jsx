@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const FavouriteRates = ({ favourites, rateData, amountInput }) => {
+const FavouriteRates = ({ favourites, rateData, amountInput, base }) => {
   return (
     <>
       {rateData &&
@@ -12,11 +12,8 @@ const FavouriteRates = ({ favourites, rateData, amountInput }) => {
                 (amountInput * rateData[item].toFixed(2)).toFixed(2),
               )}
             </td>
-            <td>SGD</td>
-            <td>1</td>
-            <td>=</td>
-            <td>{item}</td>
             <td>
+              {base} 1 = {item}{" "}
               {Intl.NumberFormat("en-US").format(rateData[item].toFixed(2))}
             </td>
           </tr>

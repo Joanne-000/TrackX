@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FavouriteRates from "./FavouriteRates";
 
-const RateTable = ({ rateData, amountInput }) => {
+const RateTable = ({ rateData, amountInput, base }) => {
   const [favourites, setFavourites] = useState(["MYR", "USD", "CNY", "AUD"]);
 
   return (
@@ -10,15 +10,12 @@ const RateTable = ({ rateData, amountInput }) => {
         <tr>
           <th>Currency Code</th>
           <th>Converted Amount</th>
-          <th></th>
-          <th></th>
           <th>Rates</th>
-          <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
         <FavouriteRates
+          base={base}
           favourites={favourites}
           rateData={rateData}
           amountInput={amountInput}
