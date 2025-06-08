@@ -1,6 +1,14 @@
+import RateDataGrid from "./DataGrid";
+
 const ExpensesTable = ({ savedData }) => {
+  console.log(savedData);
+
   return (
-    <table>
+    <>
+      <div>
+        <RateDataGrid savedData={savedData} />
+      </div>
+      {/* <table>
       <thead>
         <tr>
           <th>Date</th>
@@ -34,7 +42,8 @@ const ExpensesTable = ({ savedData }) => {
             </tr>
           ))}
       </tbody>
-    </table>
+    </table> */}
+    </>
   );
 };
 

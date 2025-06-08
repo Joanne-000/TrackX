@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { create } from "../../services/expensesServices";
 import { useNavigate } from "react-router";
 import { indexHistorical } from "../../services/currencyServices";
 
-const AddTrip = ({ addSavedData, base }) => {
+const AddTrip = ({ rateData, addSavedData, base }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     Date: "",
@@ -13,8 +13,15 @@ const AddTrip = ({ addSavedData, base }) => {
     Base: "",
     Rates: "",
   });
-
   const [dataHistorical, setHistorical] = useState();
+  const [codes, setCodes] = useState();
+
+  useEffect(() => {
+    if (rateData) {
+      console.log(Object.keys(rateData).sort());
+      setCodes(Object.keys(rateData).sort());
+    }
+  }, [rateData]);
 
   const fetchData = async (base, date) => {
     const data = await indexHistorical(base, date);
@@ -76,12 +83,19 @@ const AddTrip = ({ addSavedData, base }) => {
           <br />
           <label>
             Currency Code:
-            <input
+            <select
               name="Code"
               type="text"
               value={formData.Code}
               onChange={handleChange}
-            ></input>
+            >
+              {codes &&
+                codes.map((code) => (
+                  <option key={code} value={code}>
+                    {code}
+                  </option>
+                ))}
+            </select>
           </label>
           <br />
           <label>
@@ -89,6 +103,7 @@ const AddTrip = ({ addSavedData, base }) => {
             <input
               name="Expenses"
               type="number"
+              min="1"
               value={formData.Expenses}
               onChange={handleChange}
             ></input>

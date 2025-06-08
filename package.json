@@ -17,6 +17,10 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.1",
+    "@mui/x-data-grid": "^8.5.1",
     "json-server": "^1.0.0-beta.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -38,6 +42,10 @@
     "lint-staged": "^16.1.0",
     "prettier": "3.5.3",
     "vite": "^6.3.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "trustedDependencies": [
     "@swc/core",

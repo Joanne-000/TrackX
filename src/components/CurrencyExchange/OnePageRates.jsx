@@ -12,7 +12,7 @@ const OnePageRates = ({ rateData, base }) => {
       const displayChar = Object.keys(rateData).filter(
         (item) => item[0] === charId,
       );
-      console.log("aft", displayChar);
+      console.log("aft", Object.keys(rateData).sort());
       setChar(displayChar);
     }
   }, [rateData, charId]);

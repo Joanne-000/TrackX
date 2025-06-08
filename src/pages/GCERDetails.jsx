@@ -17,7 +17,12 @@ const GCERDetails = ({ rateData, handleRefresh }) => {
       <br />
       <div>
         Amount:
-        <input type="number" value={amountInput} onChange={handleChange} />
+        <input
+          type="number"
+          min="1"
+          value={amountInput}
+          onChange={handleChange}
+        />
         <button onClick={handleRefresh}>Refresh</button>
       </div>
       <br />
