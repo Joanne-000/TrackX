@@ -30,8 +30,6 @@ const GCER = ({ rateData, handleRefresh, base, disabled, update }) => {
 
   return (
     <div>
-      <h3>Global Currency Exchange Rate</h3>
-      <br />
       <div>
         Amount: {base + " "}
         <input
@@ -43,17 +41,15 @@ const GCER = ({ rateData, handleRefresh, base, disabled, update }) => {
         <button onClick={handleRefresh} disabled={disabled}>
           Refresh
         </button>
-        <br />
         <p style={p}>
           Last update: {dateString} {timeString}
         </p>
         <p style={p}>Data will be updated in every 30mins.</p>
         <p style={p}>
-          {disabled
-            ? "Data will be updated in every 30mins. Refresh in 5mins after the last update."
-            : ""}
+          {disabled ? "Refresh in 5mins after the last update." : ""}
         </p>
       </div>
+
       <br />
       <RateTable rateData={rateData} amountInput={amountInput} base={base} />
       <br />

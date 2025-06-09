@@ -45,7 +45,7 @@ export default function App() {
     };
 
     return clearIntervalFetch, clearIntervalRefresh;
-  }, []);
+  }, [base]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,7 +80,7 @@ export default function App() {
       <Box
         sx={{
           minHeight: "100vh",
-          background: "linear-gradient(to bottom, #ffffff,rgb(99, 119, 141))",
+          background: "rgb(159, 182, 206)",
         }}
       >
         <NavBar />
@@ -107,6 +107,8 @@ export default function App() {
                 rateData={rateData}
                 handleRefresh={handleRefresh}
                 base={base}
+                disabled={disabled}
+                update={update}
               />
             }
           >

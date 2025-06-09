@@ -1,20 +1,12 @@
 a {
   text-decoration: none;
-  color: #333;
+  color: #000000;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #1c6ab8;
+  color: #81b6eb;
   font-size: 1.3rem;
   transition: color 0.3s ease;
-}
-
-a:active {
-  color: #d32f2f;
-}
-
-button {
-  color: black;
 }

@@ -5,43 +5,34 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import FavDataGrid from "./FavDataGrid";
+import { useEffect } from "react";
 
 const RateTable = ({ rateData, amountInput, base }) => {
   const [favourites, setFavourites] = useState(["MYR", "USD", "CNY", "AUD"]);
-  const favList = [];
-  const favCode = {};
+  const [favList, setfavList] = useState();
 
-  for (let i = 0; i < favourites.length; i++) {
-    favCode.id = i;
-    favCode.Code = favourites[i];
-    favList.push(favCode);
-  }
+  useEffect(() => {
+    if (rateData) {
+      const favList = [];
+      for (let i = 0; i < favourites.length; i++) {
+        const favCode = {
+          id: i,
+          Code: favourites[i],
+          Rate: rateData[favourites[i]],
+        };
+        favList.push(favCode);
+      }
+      setfavList(favList);
+    }
+  }, [rateData, favourites]);
 
+  console.log(favList);
   return (
     <>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center" width="150">
-              Currency Code
-            </TableCell>
-            <TableCell align="center" width="180">
-              Converted Amount
-            </TableCell>
-            <TableCell align="center" width="200">
-              Rates
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <FavouriteRates
-            base={base}
-            favourites={favourites}
-            rateData={rateData}
-            amountInput={amountInput}
-          />
-        </TableBody>
-      </Table>
+      <div>
+        <FavDataGrid base={base} favList={favList} amountInput={amountInput} />
+      </div>
     </>
   );
 };

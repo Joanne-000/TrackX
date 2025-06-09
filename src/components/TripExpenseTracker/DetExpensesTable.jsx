@@ -5,6 +5,13 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
+const div = {
+  padding: "0px 30px",
+  width: "100%",
+  display: "flex",
+  justifyContent: "space-around",
+};
+
 const DetExpensesTable = ({ savedData, delSavedData }) => {
   console.log(savedData);
 
@@ -18,67 +25,69 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
 
   return (
     <>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center" width="80">
-              Date
-            </TableCell>
-            <TableCell align="center" width="80">
-              Currency Code
-            </TableCell>
-            <TableCell align="center" width="100">
-              Total Expense
-            </TableCell>
-            <TableCell align="center" width="120">
-              Converted Amount
-            </TableCell>
-            <TableCell align="center" width="150">
-              Rates
-            </TableCell>
-            <TableCell align="center" width="30">
-              Edit
-            </TableCell>
-            <TableCell align="center" width="30">
-              Delete
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {savedData &&
-            savedData.map((data) => (
-              <TableRow key={data.id}>
-                <TableCell>{data.fields.Date}</TableCell>
-                <TableCell align="center">{data.fields.Code}</TableCell>
-                <TableCell align="center">
-                  {Intl.NumberFormat("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }).format(Number(data.fields.Expenses).toFixed(2))}
-                </TableCell>
-                <TableCell align="center">
-                  {`${data.fields.Base} ${Intl.NumberFormat("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  }).format(Number(data.fields.Converted).toFixed(2))}`}
-                </TableCell>
-                <TableCell align="center">
-                  {`${data.fields.Base} 1 = ${data.fields.Code} ${data.fields.Rates}`}
-                </TableCell>
-                <TableCell>
-                  <button id={data.id} onClick={handleClickEdit}>
-                    Edit
-                  </button>
-                </TableCell>
-                <TableCell>
-                  <button id={data.id} onClick={handleClickDelete}>
-                    Delete
-                  </button>
-                </TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
+      <div style={div}>
+        <Table sx={{ width: "70%" }}>
+          <TableHead s>
+            <TableRow>
+              <TableCell align="center" width="100">
+                <strong>Date</strong>
+              </TableCell>
+              <TableCell align="center" width="100">
+                <strong> Currency Code</strong>
+              </TableCell>
+              <TableCell align="center" width="100">
+                <strong>Total Expense</strong>
+              </TableCell>
+              <TableCell align="center" width="120">
+                <strong>Converted Amount</strong>
+              </TableCell>
+              <TableCell align="center" width="150">
+                <strong>Rates</strong>
+              </TableCell>
+              <TableCell align="center" width="30">
+                <strong>Edit</strong>
+              </TableCell>
+              <TableCell align="center" width="30">
+                <strong>Delete</strong>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {savedData &&
+              savedData.map((data) => (
+                <TableRow key={data.id}>
+                  <TableCell>{data.fields.Date}</TableCell>
+                  <TableCell align="center">{data.fields.Code}</TableCell>
+                  <TableCell align="center">
+                    {Intl.NumberFormat("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }).format(Number(data.fields.Expenses).toFixed(2))}
+                  </TableCell>
+                  <TableCell align="center">
+                    {`${data.fields.Base} ${Intl.NumberFormat("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }).format(Number(data.fields.Converted).toFixed(2))}`}
+                  </TableCell>
+                  <TableCell align="center">
+                    {`${data.fields.Base} 1 = ${data.fields.Code} ${data.fields.Rates}`}
+                  </TableCell>
+                  <TableCell>
+                    <button id={data.id} onClick={handleClickEdit}>
+                      Edit
+                    </button>
+                  </TableCell>
+                  <TableCell>
+                    <button id={data.id} onClick={handleClickDelete}>
+                      Delete
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   );
 };

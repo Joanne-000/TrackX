@@ -9,14 +9,14 @@ const TripDataGrid = ({ savedData }) => {
       headerName: "Date",
       width: 120,
       align: "left",
-      valueGetter: (value, savedData) => savedData.fields.Date,
+      valueGetter: (value, row) => row.fields.Date,
     },
     {
       field: "Code",
       headerName: "Currency Code",
       width: 120,
       align: "center",
-      valueGetter: (value, savedData) => savedData.fields.Code,
+      valueGetter: (value, row) => row.fields.Code,
     },
     {
       field: "Expenses",
@@ -24,8 +24,8 @@ const TripDataGrid = ({ savedData }) => {
       type: "number",
       width: 140,
       align: "right",
-      valueGetter: (value, savedData) =>
-        Number(savedData.fields.Expenses).toLocaleString("en-US", {
+      valueGetter: (value, row) =>
+        Number(row.fields.Expenses).toLocaleString("en-US", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         }),
@@ -37,13 +37,14 @@ const TripDataGrid = ({ savedData }) => {
 
       width: 180,
       align: "right",
-      valueGetter: (value, savedData) =>
-        `${savedData.fields.Base || ""} ${Number(
-          savedData.fields.Converted,
-        ).toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })}`,
+      valueGetter: (value, row) =>
+        `${row.fields.Base || ""} ${Number(row.fields.Converted).toLocaleString(
+          "en-US",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          },
+        )}`,
     },
     {
       field: "rates",
@@ -52,8 +53,8 @@ const TripDataGrid = ({ savedData }) => {
       sortable: false,
       width: 180,
       align: "center",
-      valueGetter: (value, savedData) =>
-        `${savedData.fields.Base || ""} 1 = ${savedData.fields.Code || ""} ${savedData.fields.Rates || ""}`,
+      valueGetter: (value, row) =>
+        `${row.fields.Base || ""} 1 = ${row.fields.Code || ""} ${row.fields.Rates || ""}`,
     },
   ];
 
@@ -66,6 +67,9 @@ const TripDataGrid = ({ savedData }) => {
         aria-label="sticky table"
         rows={rows}
         columns={columns}
+        sx={{
+          background: "rgb(178, 199, 219)",
+        }}
       />
     </Box>
   );

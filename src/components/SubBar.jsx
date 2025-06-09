@@ -1,25 +1,23 @@
-import GCER from "../components/CurrencyExchange/GCER";
-import TET from "../components/TripExpenseTracker/TET";
-import { indexLatest } from "../services/currencyServices";
 import Grid from "@mui/material/Grid";
 import React, { useEffect, useState } from "react";
-import Typography from "@mui/material/Typography";
 
 const divHome = {
-  padding: "20px 20px 0px",
+  padding: "0px 20px 0px",
 };
 
 const time = {
   padding: "10px",
   display: "flex",
   justifyContent: "end",
+  fontSize: "1rem",
 };
 
 const baseCurr = {
   padding: "10px",
   display: "flex",
 };
-const SubBar = ({ rateData, handleRefresh, savedData, base }) => {
+
+const SubBar = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const setNewTime = () => {
     setCurrentTime(new Date());
@@ -43,24 +41,22 @@ const SubBar = ({ rateData, handleRefresh, savedData, base }) => {
   });
 
   return (
-    <>
-      <div style={divHome}>
-        <Grid container justifyContent="space-between">
-          <Grid size={3}>
-            <div style={baseCurr}>
-              Base Currency:
-              <select>
-                <option>SGD</option>
-              </select>
-            </div>
-          </Grid>
-          <Grid size={6}></Grid>
-          <Grid size={3} style={time}>
-            Now: {dateString} {timeString}
-          </Grid>
+    <div style={divHome}>
+      <Grid container justifyContent="space-between">
+        <Grid size={3}>
+          <div style={baseCurr}>
+            Base Currency:
+            <select>
+              <option>SGD</option>
+            </select>
+          </div>
         </Grid>
-      </div>
-    </>
+        <Grid size={6}></Grid>
+        <Grid size={3} style={time}>
+          Now: {dateString} {timeString}
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

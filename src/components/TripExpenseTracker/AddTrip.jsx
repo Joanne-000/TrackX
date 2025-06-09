@@ -2,7 +2,21 @@ import { useState, useEffect } from "react";
 import { create } from "../../services/expensesServices";
 import { useNavigate } from "react-router";
 import { indexHistorical } from "../../services/currencyServices";
-import dayjs from "dayjs";
+
+const div = {
+  padding: "0px 30px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+
+  alignItems: "center",
+};
+
+const divFieldset = {
+  width: "fit-content",
+  display: "flex",
+  justifyContent: "center",
+};
 
 const today = new Date().toISOString().split("T")[0];
 
@@ -70,9 +84,9 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
   };
 
   return (
-    <>
+    <div style={div}>
       <h2>Add your trip expenses</h2>
-      <fieldset>
+      <fieldset style={divFieldset}>
         <form onSubmit={handleSubmit}>
           <label>
             Date:
@@ -116,7 +130,7 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
           <button type="submit">Add</button>
         </form>
       </fieldset>
-    </>
+    </div>
   );
 };
 

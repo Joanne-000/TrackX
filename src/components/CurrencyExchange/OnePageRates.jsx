@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useOutletContext } from "react-router";
-import RatesDataGrid from "./FavouriteDataGrid";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+
+const div = {
+  padding: "0px 30px",
+  width: "100%",
+  display: "flex",
+  justifyContent: "space-around",
+};
 
 const OnePageRates = ({ rateData, base }) => {
   const { charId } = useParams();
@@ -18,39 +24,52 @@ const OnePageRates = ({ rateData, base }) => {
       const displayChar = Object.keys(rateData).filter(
         (item) => item[0] === charId,
       );
-      console.log("aft", Object.keys(rateData).sort());
       setChar(displayChar);
     }
   }, [rateData, charId]);
 
   return (
     <>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Currency Code</TableCell>
-            <TableCell>Converted Amount</TableCell>
-            <TableCell>Rates</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {char &&
-            char.map((item) => (
-              <TableRow key={item}>
-                <TableCell>{item}</TableCell>
-                <TableCell>
-                  {Intl.NumberFormat("en-US").format(
-                    (amountInput * rateData[item].toFixed(2)).toFixed(2),
-                  )}
-                </TableCell>
-                <TableCell>
-                  {base} 1 = {item}{" "}
-                  {Intl.NumberFormat("en-US").format(rateData[item].toFixed(2))}
-                </TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
+      <div style={div}>
+        <Table sx={{ width: "60%" }}>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">
+                <strong>Currency Code</strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong>Converted Amount</strong>
+              </TableCell>
+              <TableCell align="center">
+                <strong>Rates</strong>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {char &&
+              char.map((item) => (
+                <TableRow key={item}>
+                  <TableCell align="center">{item}</TableCell>
+                  <TableCell align="center">
+                    {Intl.NumberFormat("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }).format(
+                      (amountInput * rateData[item].toFixed(2)).toFixed(2),
+                    )}
+                  </TableCell>
+                  <TableCell align="center">
+                    {base} 1 = {item}{" "}
+                    {Intl.NumberFormat("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }).format(rateData[item].toFixed(2))}
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   );
 };

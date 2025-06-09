@@ -7,6 +7,7 @@ const nav = {
   display: "flex",
   justifyContent: "space-between",
   height: "60px",
+  backgroundColor: "rgb(78, 101, 124)",
 };
 
 const navDiv = {
@@ -20,10 +21,11 @@ const h1 = {
 };
 
 const p = {
-  padding: "0px 20px",
+  padding: "0px 30px 20px",
   display: "flex",
   margin: "0px",
   fontSize: "0.8rem",
+  backgroundColor: "rgb(78, 101, 124)",
 };
 
 const NavBar = () => {
@@ -45,7 +47,6 @@ const NavBar = () => {
         </div>
       </nav>
       <p style={p}>Your Currencies Exchange and Trip Expenses Tracker</p>
-
       <SubBar />
     </>
   );

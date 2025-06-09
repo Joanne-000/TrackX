@@ -1,11 +1,9 @@
 import GCER from "../components/CurrencyExchange/GCER";
 import TET from "../components/TripExpenseTracker/TET";
-import { indexLatest } from "../services/currencyServices";
-import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 
 const divHome = {
-  padding: "0px 20px",
+  padding: "0px 30px",
 };
 const Homepage = ({
   rateData,
@@ -18,6 +16,16 @@ const Homepage = ({
   return (
     <>
       <div style={divHome}>
+        <Grid container justifyContent="space-around">
+          <Grid size={4}>
+            <h3>Global Currency Exchange Rate</h3>
+          </Grid>
+          <Grid size={1}></Grid>
+          <Grid size={7}>
+            <h3>Trip Expenses Tracker</h3>
+          </Grid>
+        </Grid>
+
         <Grid container justifyContent="space-around">
           <Grid size={4}>
             <GCER

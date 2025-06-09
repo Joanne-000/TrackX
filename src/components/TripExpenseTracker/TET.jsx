@@ -4,7 +4,9 @@ import { Link } from "react-router";
 const TET = ({ savedData }) => {
   return (
     <div>
-      <h3>Trip Expenses Tracker</h3>
+      <br />
+      <br />
+      <br />
       <ExpensesTable savedData={savedData} />
       <br />
       <Link to="/TripExpensesTracker">
