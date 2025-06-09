@@ -1,9 +1,8 @@
 // import * as React from 'react';
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
-import { Toolbar, ToolbarButton } from "@mui/x-data-grid";
 
-const EditRateDataGrid = ({ savedData }) => {
+const TripDataGrid = ({ savedData }) => {
   const columns = [
     {
       field: "Date",
@@ -23,7 +22,7 @@ const EditRateDataGrid = ({ savedData }) => {
       field: "Expenses",
       headerName: "Total Expenses",
       type: "number",
-      width: 120,
+      width: 140,
       align: "right",
       valueGetter: (value, savedData) =>
         Number(savedData.fields.Expenses).toLocaleString("en-US", {
@@ -35,7 +34,8 @@ const EditRateDataGrid = ({ savedData }) => {
       field: "converted",
       headerName: "Converted Amount",
       type: "number",
-      width: 160,
+
+      width: 180,
       align: "right",
       valueGetter: (value, savedData) =>
         `${savedData.fields.Base || ""} ${Number(
@@ -60,17 +60,15 @@ const EditRateDataGrid = ({ savedData }) => {
   const rows = savedData;
 
   return (
-    <>
-      <Box sx={{ height: 400, width: "1005" }}>
-        <DataGrid
-          stickyHeader
-          aria-label="sticky table"
-          rows={rows}
-          columns={columns}
-        />
-      </Box>
-    </>
+    <Box sx={{ height: 400, width: "100%" }}>
+      <DataGrid
+        stickyHeader
+        aria-label="sticky table"
+        rows={rows}
+        columns={columns}
+      />
+    </Box>
   );
 };
 
-export default EditRateDataGrid;
+export default TripDataGrid;

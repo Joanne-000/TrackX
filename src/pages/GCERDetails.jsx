@@ -4,6 +4,10 @@ import { indexLatest } from "../services/currencyServices";
 import RatePagination from "../components/RatePagination";
 import { Outlet } from "react-router";
 
+const div = {
+  padding: "0px 30px",
+};
+
 const GCERDetails = ({ rateData, handleRefresh }) => {
   const [amountInput, setAmountInput] = useState(1);
 
@@ -11,7 +15,7 @@ const GCERDetails = ({ rateData, handleRefresh }) => {
     setAmountInput(event.target.value);
   };
   return (
-    <div>
+    <div style={div}>
       <h3>Global Currency Exchange Rate</h3>
       <p>Last update: date & time</p>
       <br />

@@ -1,12 +1,10 @@
-import RateDataGrid from "./DataGrid";
+import TripDataGrid from "./TripDataGrid";
 
 const ExpensesTable = ({ savedData }) => {
-  console.log(savedData);
-
   return (
     <>
       <div>
-        <RateDataGrid savedData={savedData} />
+        <TripDataGrid savedData={savedData} />
       </div>
       {/* <table>
       <thead>

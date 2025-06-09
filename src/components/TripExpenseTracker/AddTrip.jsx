@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { create } from "../../services/expensesServices";
 import { useNavigate } from "react-router";
 import { indexHistorical } from "../../services/currencyServices";
+import dayjs from "dayjs";
+
+const today = new Date().toISOString().split("T")[0];
 
 const AddTrip = ({ rateData, addSavedData, base }) => {
   const navigate = useNavigate();
@@ -78,6 +81,7 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
               type="date"
               value={formData.Date}
               onChange={handleChange}
+              max={today}
             ></input>
           </label>
           <br />

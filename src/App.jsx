@@ -1,3 +1,4 @@
+import "./app.css";
 import { indexLatest } from "./services/currencyServices";
 import { indexAirtable } from "./services/expensesServices";
 import Homepage from "./pages/Homepage";
@@ -8,23 +9,42 @@ import TETDetails from "./pages/TETDetails";
 import NavBar from "./components/NavBar";
 import AddTrip from "./components/TripExpenseTracker/AddTrip";
 import EditTrip from "./components/TripExpenseTracker/EditExpense";
-import { useNavigate } from "react-router";
-import RatePagination from "./components/RatePagination";
 import OnePageRates from "./components/CurrencyExchange/OnePageRates";
+import React from "react";
+import Box from "@mui/material/Box";
 
 export default function App() {
   const [base, setBase] = useState("SGD");
   const [rateData, setRateData] = useState();
   const [savedData, setSavedData] = useState();
-
-  const navigate = useNavigate();
+  const [disabled, setDisabled] = useState(true);
+  const [update, setUpdate] = useState(new Date());
 
   useEffect(() => {
     const fetchData = async () => {
       const dataLatest = await indexLatest(base);
       setRateData(dataLatest.rates);
+      console.log("refresh");
+      setDisabled(true);
+      setUpdate(new Date());
     };
+
+    const setRefreshDisabled = () => {
+      setDisabled(false);
+    };
+
     fetchData();
+    const intervalFetch = setInterval(fetchData, 1800000);
+    const clearIntervalFetch = () => {
+      clearInterval(intervalFetch);
+    };
+
+    const intervalRefresh = setInterval(setRefreshDisabled, 300000);
+    const clearIntervalRefresh = () => {
+      clearInterval(intervalRefresh);
+    };
+
+    return clearIntervalFetch, clearIntervalRefresh;
   }, []);
 
   useEffect(() => {
@@ -57,64 +77,67 @@ export default function App() {
 
   return (
     <>
-      <NavBar />
-      <br />
-      <div>
-        Base Currency:
-        <select>
-          <option>SGD</option>
-        </select>
-      </div>
+      <Box
+        sx={{
+          minHeight: "100vh",
+          background: "linear-gradient(to bottom, #ffffff,rgb(99, 119, 141))",
+        }}
+      >
+        <NavBar />
+        <br />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Homepage
-              base={base}
-              rateData={rateData}
-              handleRefresh={handleRefresh}
-              savedData={savedData}
-            />
-          }
-        ></Route>
-        <Route
-          path="/CurrencyExchange"
-          element={
-            <GCERDetails
-              rateData={rateData}
-              handleRefresh={handleRefresh}
-              base={base}
-            />
-          }
-        >
+        <Routes>
           <Route
-            path=":charId"
-            element={<OnePageRates rateData={rateData} base={base} />}
+            path="/"
+            element={
+              <Homepage
+                base={base}
+                rateData={rateData}
+                handleRefresh={handleRefresh}
+                savedData={savedData}
+                disabled={disabled}
+                update={update}
+              />
+            }
           ></Route>
-        </Route>
+          <Route
+            path="/CurrencyExchange"
+            element={
+              <GCERDetails
+                rateData={rateData}
+                handleRefresh={handleRefresh}
+                base={base}
+              />
+            }
+          >
+            <Route
+              path=":charId"
+              element={<OnePageRates rateData={rateData} base={base} />}
+            ></Route>
+          </Route>
 
-        <Route
-          path="/TripExpensesTracker"
-          element={
-            <TETDetails savedData={savedData} delSavedData={delSavedData} />
-          }
-        ></Route>
-        <Route
-          path="/TripExpensesTracker/new"
-          element={
-            <AddTrip
-              addSavedData={addSavedData}
-              base={base}
-              rateData={rateData}
-            />
-          }
-        ></Route>
-        <Route
-          path="/TripExpensesTracker/:tripId/edit"
-          element={<EditTrip editSavedData={editSavedData} />}
-        ></Route>
-      </Routes>
+          <Route
+            path="/TripExpensesTracker"
+            element={
+              <TETDetails savedData={savedData} delSavedData={delSavedData} />
+            }
+          ></Route>
+          <Route
+            path="/TripExpensesTracker/new"
+            element={
+              <AddTrip
+                addSavedData={addSavedData}
+                base={base}
+                rateData={rateData}
+              />
+            }
+          ></Route>
+          <Route
+            path="/TripExpensesTracker/:tripId/edit"
+            element={<EditTrip editSavedData={editSavedData} />}
+          ></Route>
+        </Routes>
+      </Box>
     </>
   );
 }

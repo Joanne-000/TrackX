@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useOutletContext } from "react-router";
+import RatesDataGrid from "./FavouriteDataGrid";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 
 const OnePageRates = ({ rateData, base }) => {
   const { charId } = useParams();
@@ -18,32 +24,34 @@ const OnePageRates = ({ rateData, base }) => {
   }, [rateData, charId]);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Currency Code</th>
-          <th>Converted Amount</th>
-          <th>Rates</th>
-        </tr>
-      </thead>
-      <tbody>
-        {char &&
-          char.map((item) => (
-            <tr key={item}>
-              <td>{item}</td>
-              <td>
-                {Intl.NumberFormat("en-US").format(
-                  (amountInput * rateData[item].toFixed(2)).toFixed(2),
-                )}
-              </td>
-              <td>
-                {base} 1 = {item}{" "}
-                {Intl.NumberFormat("en-US").format(rateData[item].toFixed(2))}
-              </td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
+    <>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Currency Code</TableCell>
+            <TableCell>Converted Amount</TableCell>
+            <TableCell>Rates</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {char &&
+            char.map((item) => (
+              <TableRow key={item}>
+                <TableCell>{item}</TableCell>
+                <TableCell>
+                  {Intl.NumberFormat("en-US").format(
+                    (amountInput * rateData[item].toFixed(2)).toFixed(2),
+                  )}
+                </TableCell>
+                <TableCell>
+                  {base} 1 = {item}{" "}
+                  {Intl.NumberFormat("en-US").format(rateData[item].toFixed(2))}
+                </TableCell>
+              </TableRow>
+            ))}
+        </TableBody>
+      </Table>
+    </>
   );
 };
 

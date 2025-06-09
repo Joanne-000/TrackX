@@ -1,22 +1,26 @@
-import { useState } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 
 const FavouriteRates = ({ favourites, rateData, amountInput, base }) => {
   return (
     <>
       {rateData &&
         favourites.map((item) => (
-          <tr key={item}>
-            <td>{item}</td>
-            <td>
+          <TableRow key={item}>
+            <TableCell align="center"> {item}</TableCell>
+            <TableCell align="center">
               {Intl.NumberFormat("en-US").format(
                 (amountInput * rateData[item].toFixed(2)).toFixed(2),
               )}
-            </td>
-            <td>
+            </TableCell>
+            <TableCell align="center">
               {base} 1 = {item}{" "}
               {Intl.NumberFormat("en-US").format(rateData[item].toFixed(2))}
-            </td>
-          </tr>
+            </TableCell>
+          </TableRow>
         ))}
     </>
   );
