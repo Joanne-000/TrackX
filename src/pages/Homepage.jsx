@@ -1,6 +1,7 @@
 import GlobalCurrency from "../components/CurrencyExchange/GlobalCurrency";
 import ExpenseTracker from "../components/TripExpenseTracker/ExpenseTracker";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 const divHome = {
   padding: "0px 30px",
@@ -43,6 +44,7 @@ const Homepage = ({
             <ExpenseTracker savedData={savedData} />
           </Grid>
         </Grid>
+        <br />
       </div>
     </>
   );

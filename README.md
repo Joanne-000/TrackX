@@ -1,6 +1,12 @@
-# TrackX - Your console.log(s)
+# TrackX - Your Currencies Exchange and Trip Expenses Tracker
 
 ## Project Brief
+
+MVP - Minimum Viable Product
+
+- Built with React using components, props, states and routes
+- Call a public API using fetch
+- At least 1 Create, 1 Update or 1 Delete functionallity using Airtable
 
 ## Timeframe
 
@@ -8,39 +14,45 @@
 
 ## Technologies used
 
-React<br>
-Bruno <br>
-libraries
+- React<br>
+- Bruno <br>
+- Airtable <br>
 
 ## Description
 
-This apps is called TrackX, means currency exchange and wealth tracker.
+TrackX is an app that allows users to track global currency exchange rates and record their travel expenses based on trip dates. This helps users understand the actual expenses incurred, converted to a base currency — by default, Singapore Dollar (SGD). Users can also change the base currency and the amount to be converted as needed.<br>
+<img src="src/assets/TrackX_Snapshot.png" alt="TrackX Homepage"  width="60%" height=auto><br>
 
 ## Wireframe
 
-by considering what to include in my apps and what are the features to be included, I have prepared the wireframe of my apps as follows:
+Based on the planned features at the early stage, I have drafted a wireframe and outlined the following user interactions:
+
+1. User will see the popular currency exchange rates on the main page.
+2. User can check out more currency exchange rates for different countries.
+3. User can input the amount to check the converted rate.
+4. User can change the base currency.
+5. User can check the historical rates.
+6. User can record their total expenses of the trip based on the trip's date and currency rates.
+7. User can add, edit and delete their previous trip's records.
 
 Figure 1: Main page of TrackX<br>
-<img src="src/assets/TrackX_Homepage.png" alt="Main page"  width="60%" height=auto><br>
+<img src="src/assets/TrackX_Homepage.png" alt="Wireframe Homepage" width="60%" height=auto><br>
 
-Figure 2: Currency Exchange Rate page of TrackX<br>
-<img src="src/assets/TrackX_CurrencyExchangeRate.png" alt="Currency Exchange Rate page"  width="60%" height=auto><br>
+Figure 2: Global Currency Exchange Rates page of TrackX<br>
+<img src="src/assets/TrackX_CurrencyExchangeRate.png" alt="Wireframe Currency Exchange Rate page"  width="60%" height=auto><br>
 
-Figure 3: Wealth Tracker page of TrackX<br>
-<img src="src/assets/TrackX_WealthTracker.png" alt="Wealth Tracker page"  width="60%" height=auto><br>
+Figure 3: Trip Expenses Tracker page of TrackX<br>
+<img src="src/assets/TrackX_ExpensesTracker.png" alt="Wireframe Expenses Tracker page"  width="60%" height=auto><br>
 
-### buy or sell
+## Future Enhancement
 
-## User stories
+Due to time constrain and first attempt on using React and libraries, some of the features are not developed at the moment. If there would be a future development on this game, I would like to improve and implement the following:
 
-1. As a user, I want to see the popular currency exchange rates on the main page.
-2. As a user, I want to see more currency exchange rates for different countries.
-3. As a user, I want to input the amount to check the converted rate.
-4. As a user, I want to change the base currency. (current base rate would SGD)
-5. As a user, I want to check the historical rates.
-6. As a user, I want to know how much is the summary of my total wealth for each currencies on the main page.
-7. As a user, I want to track and see the details of my total wealth in different currenies.
-8. As a user, I want to know what is my total wealth after converted to the base currency I chose.
+1. The country flag and country name can be displayed side by side with the currency code.
+2. User can check the historical rates.
+3. User can edit the previous input trip's records.
+4. Implement more functions in the data grid table , e.g. using the checkbox function in data grid to carry out action like delete and edit.
+5. User can change the base currency rate for the trip Expenses Tracker based on their preference.
 
 ## References
 
@@ -50,4 +62,5 @@ Figure 3: Wealth Tracker page of TrackX<br>
 
 ## Attributions
 
-1. https://currencybeacon.com/
+1. API source: CurrencyBeacon - https://currencybeacon.com/
+2. Component library: Material UI - https://bestofjs.org/projects/material-ui

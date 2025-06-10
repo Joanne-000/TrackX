@@ -10,3 +10,8 @@ a:hover {
   font-size: 1.3rem;
   transition: color 0.3s ease;
 }
+
+body {
+  min-width: "100vw";
+  min-height: "100vh";
+}

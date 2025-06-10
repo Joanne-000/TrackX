@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -43,17 +42,19 @@ const FavDataGrid = ({ favList, amountInput, base }) => {
   const rows = favList;
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
-      <DataGrid
-        stickyHeader
-        aria-label="sticky table"
-        rows={rows}
-        columns={columns}
-        sx={{
-          background: "rgb(178, 199, 219)",
-        }}
-      />
-    </Box>
+    <>
+      <Box sx={{ height: 400, width: "100%" }}>
+        <DataGrid
+          stickyHeader
+          aria-label="sticky table"
+          rows={rows}
+          columns={columns}
+          sx={{
+            background: "rgb(178, 199, 219)",
+          }}
+        />
+      </Box>
+    </>
   );
 };
 

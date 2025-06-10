@@ -13,6 +13,9 @@ import EditTrip from "./components/TripExpenseTracker/EditExpense";
 import OnePageRates from "./components/CurrencyExchange/OnePageRates";
 import React from "react";
 import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import Footer from "./components/Footer.jsx";
+import AppBar from "@mui/material/AppBar";
 
 export default function App() {
   const [base, setBase] = useState("SGD");
@@ -30,16 +33,16 @@ export default function App() {
       setUpdate(new Date());
     };
 
-    const setRefreshDisabled = () => {
-      setDisabled(false);
-    };
-
     fetchData();
+
     const intervalFetch = setInterval(fetchData, 1800000);
     const clearIntervalFetch = () => {
       clearInterval(intervalFetch);
     };
 
+    const setRefreshDisabled = () => {
+      setDisabled(false);
+    };
     const intervalRefresh = setInterval(setRefreshDisabled, 300000);
     const clearIntervalRefresh = () => {
       clearInterval(intervalRefresh);
@@ -80,14 +83,17 @@ export default function App() {
     <>
       <Box
         sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
           minHeight: "100vh",
           background: "rgb(159, 182, 206)",
         }}
       >
-        <NavBar />
-        <TimeBar />
-
-        <br />
+        <AppBar component="header" position="sticky">
+          <NavBar />
+          <TimeBar />
+        </AppBar>
 
         <Routes>
           <Route
@@ -140,6 +146,10 @@ export default function App() {
             element={<EditTrip editSavedData={editSavedData} />}
           ></Route>
         </Routes>
+
+        <AppBar component="footer" position="sticky">
+          <Footer />
+        </AppBar>
       </Box>
     </>
   );

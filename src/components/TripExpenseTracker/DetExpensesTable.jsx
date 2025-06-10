@@ -24,22 +24,22 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
   return (
     <>
       <div style={div}>
-        <Table sx={{ width: "70%" }}>
+        <Table sx={{ width: "auto" }}>
           <TableHead>
             <TableRow>
-              <TableCell align="center" width="100">
+              <TableCell align="center" width="150">
                 <strong>Date</strong>
               </TableCell>
               <TableCell align="center" width="100">
                 <strong> Currency Code</strong>
               </TableCell>
-              <TableCell align="center" width="100">
+              <TableCell align="center" width="150">
                 <strong>Total Expense</strong>
               </TableCell>
-              <TableCell align="center" width="120">
+              <TableCell align="center" width="200">
                 <strong>Converted Amount</strong>
               </TableCell>
-              <TableCell align="center" width="150">
+              <TableCell align="center" width="200">
                 <strong>Rates</strong>
               </TableCell>
               <TableCell align="center" width="30">
