@@ -24,7 +24,7 @@ const NavBar = () => {
     <>
       <nav style={styleNav}>
         <Button>
-          <NavLink to="/Home">
+          <NavLink to="/">
             <h1 style={styleH1}>TrackX</h1>
           </NavLink>
         </Button>
