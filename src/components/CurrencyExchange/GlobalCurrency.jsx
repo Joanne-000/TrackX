@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RateTable from "./RateTable";
 import { Link } from "react-router";
-import Button from "@mui/material/Button";
 
-const p = {
+const styleP = {
   padding: "0px 5px",
   display: "flex",
   margin: "0px",
   fontSize: "0.8rem",
 };
 
-const GCER = ({ rateData, handleRefresh, base, disabled, update }) => {
+const styleBase = {
+  padding: "10px",
+  display: "flex",
+};
+
+const styleAmount = {
+  padding: "10px",
+};
+
+const GlobalCurrency = ({
+  rateData,
+  handleRefresh,
+  base,
+  disabled,
+  update,
+  setBase,
+}) => {
+  const [dropdown, setDropdown] = useState();
+
+  useEffect(() => {
+    if (rateData) {
+      setDropdown(Object.keys(rateData).sort());
+    }
+  }, [rateData]);
+
   const dateString = update.toLocaleDateString("en-us", {
     day: "numeric",
     month: "long",
@@ -28,9 +51,24 @@ const GCER = ({ rateData, handleRefresh, base, disabled, update }) => {
     setAmountInput(Number(event.target.value));
   };
 
+  const handleDropdown = (event) => {
+    setBase(event.target.value);
+  };
+
   return (
     <div>
-      <div>
+      <div style={styleBase}>
+        Base Currency:
+        <select onChange={handleDropdown} value={base}>
+          {dropdown &&
+            dropdown.map((code) => (
+              <option key={code} value={code}>
+                {code}
+              </option>
+            ))}
+        </select>
+      </div>
+      <div style={styleAmount}>
         Amount: {base + " "}
         <input
           type="number"
@@ -41,11 +79,11 @@ const GCER = ({ rateData, handleRefresh, base, disabled, update }) => {
         <button onClick={handleRefresh} disabled={disabled}>
           Refresh
         </button>
-        <p style={p}>
+        <p style={styleP}>
           Last update: {dateString} {timeString}
         </p>
-        <p style={p}>Data will be updated in every 30mins.</p>
-        <p style={p}>
+        <p style={styleP}>Data will be updated in every 30mins.</p>
+        <p style={styleP}>
           {disabled ? "Refresh in 5mins after the last update." : ""}
         </p>
       </div>
@@ -60,4 +98,4 @@ const GCER = ({ rateData, handleRefresh, base, disabled, update }) => {
   );
 };
 
-export default GCER;
+export default GlobalCurrency;

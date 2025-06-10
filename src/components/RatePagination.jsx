@@ -36,8 +36,6 @@ const RatePagination = ({ rateData }) => {
     }
   }, [rateData]);
 
-  // const navBar = ["A","b","c"]
-
   return (
     <nav style={nav}>
       {navBar &&

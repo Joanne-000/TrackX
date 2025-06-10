@@ -13,10 +13,8 @@ const div = {
 };
 
 const DetExpensesTable = ({ savedData, delSavedData }) => {
-  console.log(savedData);
-
   const handleClickEdit = () => {
-    console.log("edit");
+    console.log("Oops, Edit button is currently developing.");
   };
   const handleClickDelete = (event) => {
     destroy(event.target.id);
@@ -27,7 +25,7 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
     <>
       <div style={div}>
         <Table sx={{ width: "70%" }}>
-          <TableHead s>
+          <TableHead>
             <TableRow>
               <TableCell align="center" width="100">
                 <strong>Date</strong>
@@ -71,10 +69,16 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
                     }).format(Number(data.fields.Converted).toFixed(2))}`}
                   </TableCell>
                   <TableCell align="center">
-                    {`${data.fields.Base} 1 = ${data.fields.Code} ${data.fields.Rates}`}
+                    {`${data.fields.Base} 1 = ${data.fields.Code} ${Intl.NumberFormat(
+                      "en-US",
+                      {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      },
+                    ).format(Number(data.fields.Rates).toFixed(2))}`}
                   </TableCell>
                   <TableCell>
-                    <button id={data.id} onClick={handleClickEdit}>
+                    <button id={data.id} onClick={handleClickEdit} disabled>
                       Edit
                     </button>
                   </TableCell>

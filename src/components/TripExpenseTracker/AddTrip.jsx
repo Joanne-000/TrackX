@@ -20,22 +20,23 @@ const divFieldset = {
 
 const today = new Date().toISOString().split("T")[0];
 
-const AddTrip = ({ rateData, addSavedData, base }) => {
+const AddTrip = ({ rateData, addSavedData }) => {
+  const baseRate = "SGD";
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     Date: "",
-    Code: "",
-    Expenses: "",
+    Code: "SGD",
+    Expenses: 1,
     Converted: "",
     Base: "",
     Rates: "",
   });
   const [dataHistorical, setHistorical] = useState();
   const [codes, setCodes] = useState();
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     if (rateData) {
-      console.log(Object.keys(rateData).sort());
       setCodes(Object.keys(rateData).sort());
     }
   }, [rateData]);
@@ -48,15 +49,21 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
   const handleChange = async (event) => {
     setFormData({
       ...formData,
-      Base: base,
+      Base: baseRate,
       [event.target.name]: event.target.value,
     });
-    fetchData(base, formData.Date);
+    fetchData(baseRate, formData.Date);
+
+    if (formData.Date !== "" && formData.Code !== "" && formData.Expenses > 0) {
+      setDisabled(false);
+    }
   };
 
   const setData = async () => {
     const value = Number(dataHistorical.rates[formData.Code]).toFixed(2);
-    const convertedAmount = (Number(formData.Expenses) * value).toFixed(2);
+    const convertedAmount = (
+      Number(formData.Expenses).toFixed(2) / value
+    ).toFixed(2);
 
     const data = await create({
       ...formData,
@@ -65,10 +72,9 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
     });
 
     addSavedData(data);
-    console.log(data);
     setFormData({
       Date: "",
-      Code: "",
+      Code: "SGD",
       Expenses: "",
       Converted: "",
       Base: "",
@@ -89,6 +95,16 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
       <fieldset style={divFieldset}>
         <form onSubmit={handleSubmit}>
           <label>
+            Base Currency:
+            <select name="Code" type="text" value={formData.Base} disabled>
+              <option>{formData.Base}</option>
+            </select>
+          </label>
+          <br />
+          <br />
+          <label>Your trip details:</label>
+          <br />
+          <label>
             Date:
             <input
               name="Date"
@@ -99,6 +115,7 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
             ></input>
           </label>
           <br />
+
           <label>
             Currency Code:
             <select
@@ -127,7 +144,11 @@ const AddTrip = ({ rateData, addSavedData, base }) => {
             ></input>
           </label>
           <br />
-          <button type="submit">Add</button>
+          <br />
+
+          <button type="submit" disabled={disabled}>
+            Add
+          </button>
         </form>
       </fieldset>
     </div>

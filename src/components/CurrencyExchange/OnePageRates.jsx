@@ -54,9 +54,7 @@ const OnePageRates = ({ rateData, base }) => {
                     {Intl.NumberFormat("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
-                    }).format(
-                      (amountInput * rateData[item].toFixed(2)).toFixed(2),
-                    )}
+                    }).format((amountInput * rateData[item]).toFixed(2))}
                   </TableCell>
                   <TableCell align="center">
                     {base} 1 = {item}{" "}

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 import Button from "@mui/material/Button";
-import SubBar from "./SubBar";
+import Grid from "@mui/material/Grid";
 
 const nav = {
   padding: "20px 20px 0px 20px",
@@ -18,14 +18,6 @@ const navDiv = {
 const h1 = {
   margin: "0px",
   fontSize: "2rem",
-};
-
-const p = {
-  padding: "0px 30px 20px",
-  display: "flex",
-  margin: "0px",
-  fontSize: "0.8rem",
-  backgroundColor: "rgb(78, 101, 124)",
 };
 
 const NavBar = () => {
@@ -46,8 +38,6 @@ const NavBar = () => {
           </Button>
         </div>
       </nav>
-      <p style={p}>Your Currencies Exchange and Trip Expenses Tracker</p>
-      <SubBar />
     </>
   );
 };

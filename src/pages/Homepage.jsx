@@ -1,5 +1,5 @@
-import GCER from "../components/CurrencyExchange/GCER";
-import TET from "../components/TripExpenseTracker/TET";
+import GlobalCurrency from "../components/CurrencyExchange/GlobalCurrency";
+import ExpenseTracker from "../components/TripExpenseTracker/ExpenseTracker";
 import Grid from "@mui/material/Grid";
 
 const divHome = {
@@ -12,6 +12,7 @@ const Homepage = ({
   base,
   disabled,
   update,
+  setBase,
 }) => {
   return (
     <>
@@ -28,17 +29,18 @@ const Homepage = ({
 
         <Grid container justifyContent="space-around">
           <Grid size={4}>
-            <GCER
+            <GlobalCurrency
               rateData={rateData}
               handleRefresh={handleRefresh}
               base={base}
               disabled={disabled}
               update={update}
+              setBase={setBase}
             />
           </Grid>
           <Grid size={1}></Grid>
           <Grid size={7}>
-            <TET savedData={savedData} />
+            <ExpenseTracker savedData={savedData} />
           </Grid>
         </Grid>
       </div>

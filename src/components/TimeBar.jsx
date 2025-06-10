@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 
 const divHome = {
   padding: "0px 20px 0px",
+  backgroundColor: "rgb(78, 101, 124)",
+  color: "white",
 };
 
 const time = {
@@ -12,13 +14,16 @@ const time = {
   fontSize: "1rem",
 };
 
-const baseCurr = {
-  padding: "10px",
+const p = {
+  padding: "0px 10px 20px",
   display: "flex",
+  margin: "0px",
+  fontSize: "0.8rem",
 };
 
 const SubBar = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+
   const setNewTime = () => {
     setCurrentTime(new Date());
   };
@@ -43,15 +48,10 @@ const SubBar = () => {
   return (
     <div style={divHome}>
       <Grid container justifyContent="space-between">
-        <Grid size={3}>
-          <div style={baseCurr}>
-            Base Currency:
-            <select>
-              <option>SGD</option>
-            </select>
-          </div>
+        <Grid size={6}>
+          <p style={p}>Your Currencies Exchange and Trip Expenses Tracker</p>
         </Grid>
-        <Grid size={6}></Grid>
+        <Grid size={3}></Grid>
         <Grid size={3} style={time}>
           Now: {dateString} {timeString}
         </Grid>

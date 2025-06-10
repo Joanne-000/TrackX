@@ -22,7 +22,7 @@ const FavDataGrid = ({ favList, amountInput, base }) => {
         `${Intl.NumberFormat("en-US", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
-        }).format((amountInput * Number(row.Rate).toFixed(2)).toFixed(2))}`,
+        }).format((amountInput * Number(row.Rate)).toFixed(2))}`,
     },
     {
       field: "rates",

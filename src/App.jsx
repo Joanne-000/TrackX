@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router";
 import GCERDetails from "./pages/GCERDetails";
 import TETDetails from "./pages/TETDetails";
 import NavBar from "./components/NavBar";
+import TimeBar from "./components/TimeBar";
 import AddTrip from "./components/TripExpenseTracker/AddTrip";
 import EditTrip from "./components/TripExpenseTracker/EditExpense";
 import OnePageRates from "./components/CurrencyExchange/OnePageRates";
@@ -84,6 +85,8 @@ export default function App() {
         }}
       >
         <NavBar />
+        <TimeBar />
+
         <br />
 
         <Routes>
@@ -97,6 +100,7 @@ export default function App() {
                 savedData={savedData}
                 disabled={disabled}
                 update={update}
+                setBase={setBase}
               />
             }
           ></Route>
@@ -109,6 +113,7 @@ export default function App() {
                 base={base}
                 disabled={disabled}
                 update={update}
+                setBase={setBase}
               />
             }
           >
@@ -127,11 +132,7 @@ export default function App() {
           <Route
             path="/TripExpensesTracker/new"
             element={
-              <AddTrip
-                addSavedData={addSavedData}
-                base={base}
-                rateData={rateData}
-              />
+              <AddTrip addSavedData={addSavedData} rateData={rateData} />
             }
           ></Route>
           <Route
