@@ -28,7 +28,7 @@ const AddTrip = ({ rateData, addSavedData }) => {
     Code: "SGD",
     Expenses: 1,
     Converted: "",
-    Base: "",
+    Base: baseRate,
     Rates: "",
   });
   const [dataHistorical, setHistorical] = useState();
@@ -77,7 +77,7 @@ const AddTrip = ({ rateData, addSavedData }) => {
       Code: "SGD",
       Expenses: "",
       Converted: "",
-      Base: "",
+      Base: baseRate,
       Rates: "",
     });
   };
@@ -97,7 +97,7 @@ const AddTrip = ({ rateData, addSavedData }) => {
           <label>
             Base Currency:
             <select name="Code" type="text" value={formData.Base} disabled>
-              <option>{formData.Base}</option>
+              <option selected>{baseRate}</option>
             </select>
           </label>
           <br />
