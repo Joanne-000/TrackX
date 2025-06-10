@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import RatePagination from "../components/CurrencyExchange/RatePagination";
 import { Outlet } from "react-router";
+import Button from "@mui/material/Button";
 
 const styleDiv = {
   padding: "0px 30px",
@@ -81,9 +82,15 @@ const GCERDetails = ({
           value={amountInput}
           onChange={handleChange}
         />
-        <button onClick={handleRefresh} disabled={disabled}>
+        <Button
+          onClick={handleRefresh}
+          disabled={disabled}
+          variant="contained"
+          size="small"
+          sx={{ fontSize: "0.6rem", backgroundColor: "rgb(65, 85, 112)" }}
+        >
           Refresh
-        </button>
+        </Button>
         <br />
         <p style={styleP}>
           Last update: {dateString} {timeString}

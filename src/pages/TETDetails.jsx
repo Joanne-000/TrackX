@@ -1,5 +1,6 @@
 import DetExpensesTable from "../components/TripExpenseTracker/DetExpensesTable";
 import { Link } from "react-router";
+import Button from "@mui/material/Button";
 
 const styleDiv = {
   padding: "0px 30px",
@@ -19,7 +20,14 @@ const TETDetails = ({ savedData, delSavedData }) => {
       <br />
       <div style={styleButton}>
         <Link to="/TripExpensesTracker/new">
-          <button type="submit">AddTrip</button>
+          <Button
+            type="submit"
+            variant="contained"
+            size="small"
+            sx={{ fontSize: "0.7rem", backgroundColor: "rgb(65, 85, 112)" }}
+          >
+            Add Trip
+          </Button>
         </Link>
       </div>
     </div>

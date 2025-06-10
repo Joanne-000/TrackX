@@ -4,6 +4,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Button from "@mui/material/Button";
 
 const styleDiv = {
   padding: "0px 30px",
@@ -78,14 +79,35 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
                     ).format(Number(data.fields.Rates))}`}
                   </TableCell>
                   <TableCell>
-                    <button id={data.id} onClick={handleClickEdit} disabled>
+                    <Button
+                      id={data.id}
+                      onClick={handleClickEdit}
+                      disabled
+                      type="submit"
+                      variant="contained"
+                      size="small"
+                      sx={{
+                        fontSize: "0.6rem",
+                        backgroundColor: "rgb(65, 85, 112)",
+                      }}
+                    >
                       Edit
-                    </button>
+                    </Button>
                   </TableCell>
                   <TableCell>
-                    <button id={data.id} onClick={handleClickDelete}>
+                    <Button
+                      id={data.id}
+                      onClick={handleClickDelete}
+                      type="submit"
+                      variant="contained"
+                      size="small"
+                      sx={{
+                        fontSize: "0.6rem",
+                        backgroundColor: "rgb(65, 85, 112)",
+                      }}
+                    >
                       Delete
-                    </button>
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}

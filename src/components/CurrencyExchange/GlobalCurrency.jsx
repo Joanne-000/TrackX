@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RateTable from "./RateTable";
 import { Link } from "react-router";
+import Button from "@mui/material/Button";
 
 const styleP = {
   padding: "0px 5px",
@@ -76,9 +77,15 @@ const GlobalCurrency = ({
           value={amountInput}
           onChange={handleChange}
         />
-        <button onClick={handleRefresh} disabled={disabled}>
+        <Button
+          onClick={handleRefresh}
+          disabled={disabled}
+          variant="contained"
+          size="small"
+          sx={{ fontSize: "0.6rem", backgroundColor: "rgb(65, 85, 112)" }}
+        >
           Refresh
-        </button>
+        </Button>
         <p style={styleP}>
           Last update: {dateString} {timeString}
         </p>
@@ -91,9 +98,17 @@ const GlobalCurrency = ({
       <br />
       <RateTable rateData={rateData} amountInput={amountInput} base={base} />
       <br />
-      <Link to="/CurrencyExchange">
-        <button>See more rates</button>
-      </Link>
+      <div>
+        <Link to="/CurrencyExchange">
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ fontSize: "0.6rem", backgroundColor: "rgb(65, 85, 112)" }}
+          >
+            See more rates
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };
