@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink } from "react-router";
 import Button from "@mui/material/Button";
 
-const nav = {
+const styleNav = {
   padding: "10px 10px 0px 10px",
   display: "flex",
   flexWrap: "wrap",
@@ -11,7 +11,7 @@ const nav = {
   height: "120px",
 };
 
-const charStyle = {
+const styleChar = {
   color: "black",
 };
 
@@ -37,11 +37,11 @@ const RatePagination = ({ rateData }) => {
   }, [rateData]);
 
   return (
-    <nav style={nav}>
+    <nav style={styleNav}>
       {navBar &&
         navBar.map((char) => (
           <NavLink to={`/CurrencyExchange/${char}`} key={char}>
-            <Button style={charStyle}>
+            <Button style={styleChar}>
               <strong>{char}</strong>
             </Button>
           </NavLink>

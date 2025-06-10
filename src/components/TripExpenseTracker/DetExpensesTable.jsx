@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-const div = {
+const styleDiv = {
   padding: "0px 30px",
   width: "100%",
   display: "flex",
@@ -23,7 +23,7 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
 
   return (
     <>
-      <div style={div}>
+      <div style={styleDiv}>
         <Table sx={{ width: "auto" }}>
           <TableHead>
             <TableRow>
@@ -60,13 +60,13 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
                     {Intl.NumberFormat("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
-                    }).format(Number(data.fields.Expenses).toFixed(2))}
+                    }).format(Number(data.fields.Expenses))}
                   </TableCell>
                   <TableCell align="center">
                     {`${data.fields.Base} ${Intl.NumberFormat("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
-                    }).format(Number(data.fields.Converted).toFixed(2))}`}
+                    }).format(Number(data.fields.Converted))}`}
                   </TableCell>
                   <TableCell align="center">
                     {`${data.fields.Base} 1 = ${data.fields.Code} ${Intl.NumberFormat(
@@ -75,7 +75,7 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       },
-                    ).format(Number(data.fields.Rates).toFixed(2))}`}
+                    ).format(Number(data.fields.Rates))}`}
                   </TableCell>
                   <TableCell>
                     <button id={data.id} onClick={handleClickEdit} disabled>

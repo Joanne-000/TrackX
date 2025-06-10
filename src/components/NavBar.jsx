@@ -1,8 +1,7 @@
 import { NavLink } from "react-router";
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
 
-const nav = {
+const styleNav = {
   padding: "20px 20px 0px 20px",
   display: "flex",
   justifyContent: "space-between",
@@ -10,12 +9,12 @@ const nav = {
   backgroundColor: "rgb(78, 101, 124)",
 };
 
-const navDiv = {
+const styleNavDiv = {
   display: "flex",
   justifyContent: "flexEnd",
 };
 
-const h1 = {
+const styleH1 = {
   margin: "0px",
   fontSize: "2rem",
 };
@@ -23,17 +22,17 @@ const h1 = {
 const NavBar = () => {
   return (
     <>
-      <nav style={nav}>
+      <nav style={styleNav}>
         <Button>
-          <NavLink to="/">
-            <h1 style={h1}>TrackX</h1>
+          <NavLink to="/Home">
+            <h1 style={styleH1}>TrackX</h1>
           </NavLink>
         </Button>
-        <div style={navDiv}>
-          <Button style={navDiv}>
+        <div style={styleNavDiv}>
+          <Button style={styleNavDiv}>
             <NavLink to="/CurrencyExchange">Currency Exchange Rates</NavLink>
           </Button>
-          <Button style={navDiv}>
+          <Button style={styleNavDiv}>
             <NavLink to="/TripExpensesTracker">Trip Expenses Tracker</NavLink>
           </Button>
         </div>

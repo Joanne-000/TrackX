@@ -1,20 +1,20 @@
 import Grid from "@mui/material/Grid";
 import React, { useEffect, useState } from "react";
 
-const divHome = {
+const styleDivHome = {
   padding: "0px 20px 0px",
   backgroundColor: "rgb(78, 101, 124)",
   color: "white",
 };
 
-const time = {
+const styleTime = {
   padding: "10px",
   display: "flex",
   justifyContent: "end",
   fontSize: "1rem",
 };
 
-const p = {
+const styleP = {
   padding: "0px 10px 20px",
   display: "flex",
   margin: "0px",
@@ -46,13 +46,15 @@ const SubBar = () => {
   });
 
   return (
-    <div style={divHome}>
+    <div style={styleDivHome}>
       <Grid container justifyContent="space-between">
         <Grid size={6}>
-          <p style={p}>Your Currencies Exchange and Trip Expenses Tracker</p>
+          <p style={styleP}>
+            Your Currencies Exchange and Trip Expenses Tracker
+          </p>
         </Grid>
         <Grid size={3}></Grid>
-        <Grid size={3} style={time}>
+        <Grid size={3} style={styleTime}>
           Now: {dateString} {timeString}
         </Grid>
       </Grid>

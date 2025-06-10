@@ -21,7 +21,7 @@ const FavDataGrid = ({ favList, amountInput, base }) => {
         `${Intl.NumberFormat("en-US", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
-        }).format((amountInput * Number(row.Rate)).toFixed(2))}`,
+        }).format(amountInput * Number(row.Rate))}`,
     },
     {
       field: "rates",
@@ -30,12 +30,12 @@ const FavDataGrid = ({ favList, amountInput, base }) => {
       sortable: false,
       width: 180,
       align: "center",
-      valueGetter: (value, favList) =>
-        `${base || ""} 1 = ${favList.Code || ""} 
+      valueGetter: (value, row) =>
+        `${base || ""} 1 = ${row.Code || ""} 
         ${Intl.NumberFormat("en-US", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
-        }).format(Number(favList.Rate).toFixed(2))}`,
+        }).format(Number(row.Rate))}`,
     },
   ];
 
@@ -45,8 +45,6 @@ const FavDataGrid = ({ favList, amountInput, base }) => {
     <>
       <Box sx={{ height: 400, width: "100%" }}>
         <DataGrid
-          stickyHeader
-          aria-label="sticky table"
           rows={rows}
           columns={columns}
           sx={{

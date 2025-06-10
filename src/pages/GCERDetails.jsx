@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import RatePagination from "../components/RatePagination";
+import RatePagination from "../components/CurrencyExchange/RatePagination";
 import { Outlet } from "react-router";
 
 const styleDiv = {

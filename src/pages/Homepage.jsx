@@ -1,11 +1,11 @@
 import GlobalCurrency from "../components/CurrencyExchange/GlobalCurrency";
 import ExpenseTracker from "../components/TripExpenseTracker/ExpenseTracker";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 
-const divHome = {
+const styleDivHome = {
   padding: "0px 30px",
 };
+
 const Homepage = ({
   rateData,
   handleRefresh,
@@ -17,7 +17,7 @@ const Homepage = ({
 }) => {
   return (
     <>
-      <div style={divHome}>
+      <div style={styleDivHome}>
         <Grid container justifyContent="space-around">
           <Grid size={4}>
             <h3>Global Currency Exchange Rate</h3>

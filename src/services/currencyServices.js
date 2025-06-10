@@ -1,8 +1,6 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = `https://api.currencybeacon.com/v1`;
 
-const category = "";
-
 const indexLatest = async (base) => {
   const category = "latest";
   const url =

@@ -1,23 +1,23 @@
 import DetExpensesTable from "../components/TripExpenseTracker/DetExpensesTable";
 import { Link } from "react-router";
 
-const div = {
+const styleDiv = {
   padding: "0px 30px",
 };
 
-const button = {
+const styleButton = {
   display: "flex",
   justifyContent: "center",
 };
 
 const TETDetails = ({ savedData, delSavedData }) => {
   return (
-    <div style={div}>
+    <div style={styleDiv}>
       <h3>Trip Expenses Tracker</h3>
 
       <DetExpensesTable savedData={savedData} delSavedData={delSavedData} />
       <br />
-      <div style={button}>
+      <div style={styleButton}>
         <Link to="/TripExpensesTracker/new">
           <button type="submit">AddTrip</button>
         </Link>

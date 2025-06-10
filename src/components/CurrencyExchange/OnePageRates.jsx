@@ -7,7 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-const div = {
+const styleDiv = {
   padding: "0px 30px",
   width: "100%",
   display: "flex",
@@ -30,7 +30,7 @@ const OnePageRates = ({ rateData, base }) => {
 
   return (
     <>
-      <div style={div}>
+      <div style={styleDiv}>
         <Table sx={{ width: "60%" }}>
           <TableHead>
             <TableRow>
@@ -54,14 +54,14 @@ const OnePageRates = ({ rateData, base }) => {
                     {Intl.NumberFormat("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
-                    }).format((amountInput * rateData[item]).toFixed(2))}
+                    }).format(amountInput * rateData[item])}
                   </TableCell>
                   <TableCell align="center">
                     {base} 1 = {item}{" "}
                     {Intl.NumberFormat("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
-                    }).format(rateData[item].toFixed(2))}
+                    }).format(rateData[item])}
                   </TableCell>
                 </TableRow>
               ))}

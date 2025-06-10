@@ -97,7 +97,7 @@ export default function App() {
 
         <Routes>
           <Route
-            path="/"
+            path="/Home"
             element={
               <Homepage
                 base={base}
