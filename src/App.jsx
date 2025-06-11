@@ -143,7 +143,13 @@ export default function App() {
           ></Route>
           <Route
             path="/TripExpensesTracker/:tripId/edit"
-            element={<EditTrip editSavedData={editSavedData} />}
+            element={
+              <EditTrip
+                editSavedData={editSavedData}
+                savedData={savedData}
+                rateData={rateData}
+              />
+            }
           ></Route>
         </Routes>
 

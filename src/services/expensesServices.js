@@ -43,7 +43,29 @@ const create = async (data) => {
     console.log(error);
   }
 };
+const show = async (id) => {
+  const url = BASE_URL + "/" + id;
 
+  try {
+    const respond = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer patUQQwGtzMj4DbdX.d82f4212b6c59385bd111004b3426467a94fb086d9bfe1985cf6f8794ef13a01",
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!respond.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    const dataLatest = await respond.json();
+    return dataLatest;
+  } catch (error) {
+    console.log(error);
+  }
+};
 const destroy = async (id) => {
   const url = BASE_URL + "?records[]=" + id;
   try {
@@ -66,4 +88,28 @@ const destroy = async (id) => {
     console.log(error);
   }
 };
-export { indexAirtable, create, destroy };
+
+const update = async (id, data) => {
+  const url = BASE_URL + "?records[]=" + id;
+  try {
+    const response = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization:
+          "Bearer patUQQwGtzMj4DbdX.afdb8d06348176aa352ca6d9b685daae53d87f356e9fd479f9c28845051d37f3",
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+export { indexAirtable, show, create, destroy, update };

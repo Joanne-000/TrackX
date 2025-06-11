@@ -5,6 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router";
 
 const styleDiv = {
   padding: "0px 30px",
@@ -14,9 +15,12 @@ const styleDiv = {
 };
 
 const DetExpensesTable = ({ savedData, delSavedData }) => {
-  const handleClickEdit = () => {
-    console.log("Oops, Edit button is currently developing.");
+  const navigate = useNavigate();
+  const handleClickEdit = (event) => {
+    const selectedID = event.target.id;
+    navigate(`/TripExpensesTracker/${selectedID}/edit`);
   };
+
   const handleClickDelete = (event) => {
     destroy(event.target.id);
     delSavedData(event.target.id);
@@ -82,10 +86,10 @@ const DetExpensesTable = ({ savedData, delSavedData }) => {
                     <Button
                       id={data.id}
                       onClick={handleClickEdit}
-                      disabled
                       type="submit"
                       variant="contained"
                       size="small"
+                      disabled
                       sx={{
                         fontSize: "0.6rem",
                         backgroundColor: "rgb(65, 85, 112)",
